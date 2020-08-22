@@ -8,7 +8,7 @@ class PointModel(models.Model):
     score = models.IntegerField()
 
     def __str__(self):
-        return "%d: (%f, %f) Sc: %d" % (self.id, self.geom.coords[0], self.geom.coords[1], self.score)
+        return "{}: ({}, {}) Sc: {}".format(self.id, self.geom.coords[0], self.geom.coords[1], self.score)
 
 
 class LineModel(models.Model):
@@ -16,4 +16,4 @@ class LineModel(models.Model):
     to_point = models.ForeignKey(to='PointModel', on_delete=models.PROTECT, related_name='to_point')
 
     def __str__(self):
-        return str(self.from_point.id) + " -> " + str(self.to_point.id)
+        return "{} -> {}".format(self.from_point.id, self.to_point.id)
