@@ -1,5 +1,7 @@
-from django.urls import path
+from rest_framework import routers
+from .views import PointViewSet
 
-urlpatterns = [
+router = routers.SimpleRouter()
+router.register('point', PointViewSet)
 
-]
+urlpatterns = router.urls
